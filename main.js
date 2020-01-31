@@ -33,7 +33,7 @@ function generateFood() {
 }
 
 function drawFood() {
-  if (foodPellets.length < 5) {
+  if (foodPellets.length < 1) {
     generateFood();
   }
   for (let i = 0; i < foodPellets.length; i++) {
