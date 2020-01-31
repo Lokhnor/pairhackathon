@@ -1,5 +1,10 @@
 var ctx = document.getElementById("ctx").getContext("2d");
 var canvas = document.getElementById("ctx");
+ctx.font = "30px Arial";
+
+let score = 0;
+
+let dogPicture = "";
 
 var player = {
   x: 200,
@@ -20,7 +25,7 @@ var food = {
 };
 
 function drawPlayer() {
-  ctx.fillStyle = "green";
+  ctx.fillStyle = "yellow";
   ctx.fillRect(player.x, player.y, 30, 30);
 }
 
@@ -96,16 +101,40 @@ function foodCollision() {
     foodDistanceY = Math.abs(player.y - foodPellets[i].y);
     if (foodDistanceX <= 20 && foodDistanceY <= 20) {
       foodPellets.pop();
+      score++;
+      getDogPicture();
     }
   }
+}
+
+function drawScore() {
+  ctx.fillStyle = "black";
+  ctx.fillText(`Happy Dogs: ${score}`, 200, 50);
+}
+
+function drawBackground() {
+  ctx.fillStyle = "green";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function getDogPicture() {
+  fetch("https://random.dog/874c26e5-adbe-4ead-943f-10b92141bc12.mp4")
+    .then(response => {
+      return response.json();
+    })
+    .then(myJson => {
+      console.log(myJson);
+    });
 }
 
 setInterval(drawGame, 17);
 function drawGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // clear screen to draw next frame
+  drawBackground(); // draw green background like grass
   drawPlayer(); // draw player on current frame
   directionalInput(); // watch for WASD directional input
   movePlayer(); // change player.x and player.y to move accordingly, in increments of "step"
   drawFood(); // draw all foodPellets
   foodCollision(); // monitors distance between player and foodPellets, deletes food on collision
+  drawScore(); // draw current score on canvas
 }
