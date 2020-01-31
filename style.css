@@ -2,4 +2,33 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: #35495e;
+}
+
+h1 {
+  font-family: "Kirang Haerang", cursive;
+  font-size: 6em;
+  color: whitesmoke;
+  margin: 0;
+}
+
+h2 {
+  font-family: "Kirang Haerang", cursive;
+  color: whitesmoke;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  color: whitesmoke;
+}
+
+.link {
+  color: whitesmoke;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  border: solid 5px #347474;
+  background-color: #ee8572;
+  padding: 7px;
+  margin: 3px;
+  box-sizing: border-box;
 }
