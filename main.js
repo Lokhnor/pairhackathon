@@ -3,8 +3,10 @@ var canvas = document.getElementById("ctx");
 ctx.font = "30px Arial";
 
 let score = 0;
+let quote = " ";
+let dogPicture;
 
-let dogPicture = "";
+let p = document.getElementById("kanye");
 
 var player = {
   x: 200,
@@ -118,12 +120,14 @@ function drawBackground() {
 }
 
 function getDogPicture() {
-  fetch("https://random.dog/874c26e5-adbe-4ead-943f-10b92141bc12.mp4")
+  fetch("https://api.kanye.rest")
     .then(response => {
       return response.json();
     })
     .then(myJson => {
-      console.log(myJson);
+      quote = JSON.stringify(myJson);
+      p.innerText = quote;
+      console.log(quote, "h");
     });
 }
 
