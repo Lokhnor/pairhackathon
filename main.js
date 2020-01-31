@@ -4,6 +4,8 @@ ctx.font = "30px Arial";
 
 let score = 0;
 
+let dogPicture = "";
+
 var player = {
   x: 200,
   y: 200,
@@ -100,6 +102,7 @@ function foodCollision() {
     if (foodDistanceX <= 20 && foodDistanceY <= 20) {
       foodPellets.pop();
       score++;
+      getDogPicture();
     }
   }
 }
@@ -112,6 +115,16 @@ function drawScore() {
 function drawBackground() {
   ctx.fillStyle = "green";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function getDogPicture() {
+  fetch("https://random.dog/874c26e5-adbe-4ead-943f-10b92141bc12.mp4")
+    .then(response => {
+      return response.json();
+    })
+    .then(myJson => {
+      console.log(myJson);
+    });
 }
 
 setInterval(drawGame, 17);
