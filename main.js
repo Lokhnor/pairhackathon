@@ -3,8 +3,10 @@ var canvas = document.getElementById("ctx");
 ctx.font = "30px Arial";
 
 let score = 0;
-
+let quote = " ";
 let dogPicture;
+
+let p = document.getElementById("kanye");
 
 var player = {
   x: 200,
@@ -123,7 +125,9 @@ function getDogPicture() {
       return response.json();
     })
     .then(myJson => {
-      console.log(myJson);
+      quote = JSON.stringify(myJson);
+      p.innerText = quote;
+      console.log(quote, "h");
     });
 }
 
