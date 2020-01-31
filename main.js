@@ -4,7 +4,7 @@ ctx.font = "30px Arial";
 
 let score = 0;
 
-let dogPicture = "";
+let dogPicture;
 
 var player = {
   x: 200,
@@ -118,7 +118,7 @@ function drawBackground() {
 }
 
 function getDogPicture() {
-  fetch("https://random.dog/874c26e5-adbe-4ead-943f-10b92141bc12.mp4")
+  fetch("https://api.kanye.rest")
     .then(response => {
       return response.json();
     })
