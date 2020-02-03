@@ -119,15 +119,17 @@ function drawBackground() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
+let img = document.querySelector("img");
+let imgUrl = "https://dog.ceo/api/breeds/image/random";
+
 function getDogPicture() {
-  fetch("https://api.kanye.rest")
-    .then(response => {
+  fetch(imgUrl)
+    .then(function(response) {
       return response.json();
     })
-    .then(myJson => {
-      quote = JSON.stringify(myJson);
-      p.innerText = quote;
-      console.log(quote, "h");
+    .then(function(object) {
+      console.log(object);
+      img.src = object.message;
     });
 }
 
